@@ -46,17 +46,9 @@ class Vampire {
   // * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
 
   closestCommonAncestor(vampire) {
-    // console.log("VAMPIRE   :  ", this.isMoreSeniorThan(vampire), this.name);
-
-    // if (this.isMoreSeniorThan(vampire)) {
-    //   console.log("VAMPIRE   :  ", this.isMoreSeniorThan(vampire), this.name);
-    //   return this;
-    // } else {
-    //   console.log("VAMPIRE   :  ", this.isMoreSeniorThan(vampire), vampire.name);
-    //   return vampire;
-    // }
-
-    if (this.creator === vampire.creator) { //base case
+    if (vampire === this) {
+      return this;
+    } else if (this.creator === vampire.creator) { //base case
       return this.creator;
     } else if (!vampire.creator) { //this works
       return vampire;
@@ -69,10 +61,7 @@ class Vampire {
         return vampire.closestCommonAncestor(this.creator); //rec case
       }
     }
-
-
   }
-
 }
 
 
